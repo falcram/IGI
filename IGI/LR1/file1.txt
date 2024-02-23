@@ -1,2 +1,6 @@
 info 
+<<<<<<< HEAD
 afadfad
+=======
+sdkk
+>>>>>>> 9a0e0fb (Update file1.txt)
