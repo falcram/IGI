@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+  server:
+ 
+    build: server/
+
+    command: python ./server.py
+
+    networks:
+      - task4_1
+
+    volumes:
+      - /usr/src/app
+
+    ports:
+      - 1234:1234
+
+
+  client:
+
+    build: client/
+
+    command: python ./client.py
+    
+    network_mode: host
+
+    depends_on:
+      - server
+
+networks:
+  task4_1:
+    external: "true"
+    driver: bridge
