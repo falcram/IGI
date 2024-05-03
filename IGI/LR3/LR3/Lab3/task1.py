@@ -55,3 +55,4 @@ def task1():
     headers=["x","n","F(X)","Math F(x)","eps"]
     print(x,"|",terms_count,"|",series_value,"|",math.asin(x),"|",eps)
     #print(tabulate(resultData, headers=headers, tablefmt="grid"))
+task1()

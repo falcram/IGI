@@ -1,11 +1,14 @@
+#Check input by defined criterion
 def check_input(inp_type, checked_val):
     while True:
         try:
-            temp = inp_type(input())     
+            temp = input()     
             if checked_val == "NO VALUE":
-                return temp 
-            elif checked_val != "NO VALUE" and temp == checked_val:
-                return temp
+                return inp_type(temp) 
+            elif checked_val != "NO VALUE" and temp != checked_val:
+                return inp_type(temp)
+            elif temp == checked_val:
+                return "STOP"
             else:
                 print("Incorrect value!")    
         except ValueError:
