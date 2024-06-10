@@ -1,0 +1,12 @@
+Words that contains only upper case letters and decimals: A0, 
+Amount of sentences: 5
+Amount of narrative: 5
+Amount of interrogative: 0
+Amount of incentive: 0
+Average word length: 3.975
+Average sentence length: 49.166666666666664
+Amount of words that contains only upper case letters: 2
+Longest word that starts with "l": longest
+Words that repeats in the text: by, to, at, out, aaaaaaa, sam, he, way, their, the, up, 
+:-) : It is a smile
+A0asdasd1_ad03 : Strong Password

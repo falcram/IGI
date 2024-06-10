@@ -5,9 +5,8 @@
 # Program Version: 1.0
 # Developer: Dubovik Arseny
 # Development Date: 04.04.2024
-import os
 
-# Import the module where the calculate_series function is defined
+# Import the module where functions is defined
 from Task1 import task1
 from Task2 import task2
 from Task3 import task3
@@ -16,10 +15,7 @@ from Task5 import task5
 
 #Show functions and allows to choose function to use
 def main():
-    """
-    The main function of the program. It prompts the user for input,
-    calls the calculate_series function, and prints the results.
-    """
+    """Show functions and allows to choose function to use"""
     print("Enter the number of the task you want to complete:")
     print("1 - Task 1")
     print("2 - Task 2")
@@ -29,8 +25,7 @@ def main():
     print("6 - Exit")
     task = input()
     exitTask=False
-    exitLab=False
-    while exitLab==False:
+    while True:
             match task:
                 case "1":
                     while exitTask==False:
@@ -139,7 +134,7 @@ def main():
                             print(f"Error occurred: {e}")
                 case "6":
                     print("Program shutdown.")
-                    exitLab = True
+                    exit()
                 case _:
                     print("Invalid value entered, try again!")
                     main()

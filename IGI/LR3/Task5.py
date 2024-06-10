@@ -4,6 +4,7 @@ from input_list import generate_random_list_t5
 def task5():
     #Finde in list last element that the same as check value 
     def list_rindex(lst, item):
+        """Finde in list last element that the same as check value """
         i = len(lst) - 1
         while i >= 0:
             if lst[i] == item:
@@ -12,6 +13,7 @@ def task5():
         return -1
     #Sum numbers after last defined element and count alements that greater than zero and even 
     def task_func(input_list):
+        """Sum numbers after last defined element and count alements that greater than zero and even """
         target = 0
         place = list_rindex(input_list, target)
         if place == -1:
@@ -46,5 +48,6 @@ def task5():
     print(f"Sum: {sum}, Amount: {amount}")  
     for i in inp_list:
         print(i, end=", ")
+    print("")
     
 #task5()

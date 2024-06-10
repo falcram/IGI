@@ -2,16 +2,18 @@ import math
 from check_input import check_input
 #Make calculations for arcsin by custom fun and math lib function and print result
 def task1():
+    """Make calculations for arcsin by custom fun and math lib function and print result"""
 
     #Calculate custom arcsin
     def my_arcsin(x, eps):
+        """Calculate custom arcsin"""
         sum = x
         elem = x
         n=0
         while  abs(elem) > eps and n < 500:
             n+=1
             elem =  (math.factorial(2 * n) / ((2 ** (2 * n) * (math.factorial(n) ** 2))) * (x ** (2 * n + 1) / (2 * n + 1)))
-            print(elem)
+            #print(elem)
             sum += elem
             
         return sum, n

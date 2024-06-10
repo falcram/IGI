@@ -3,8 +3,10 @@ from input_list import get_user_list_t2
 from input_list import generate_random_list_t2
 # Get list of integer values and sum every second of them and print result
 def task2():
+    """Get list of integer values and sum every second of them and print result"""
     #Sum every second number and return integer sum
     def my_integer_sum(nums):
+        """Sum every second number and return integer sum"""
         sum = 0
         for i in range(len(nums)):
             if i%2!=0:
@@ -16,6 +18,7 @@ def task2():
     while True:
         choice = check_input(int, "NO VALUE")
         if choice == 1:
+            print("Input 0 to end:")
             numbers = get_user_list_t2()
             break
         elif choice == 2:
