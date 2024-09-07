@@ -3274,3 +3274,26 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'terms' not found. 'terms' is
 2024-06-10 15:41:54,447 INFO Tim called ReviewCreateView (status: client) | user's Timezone: Europe/Minsk
 2024-06-10 15:42:17,818 INFO ReviewForm has no errors)
 2024-06-10 15:42:17,833 INFO Review 'Крутой медведь' was created by Tim 
+2024-06-10 15:58:15,629 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:03:36,445 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:03:37,969 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:03:38,379 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:03:57,554 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:15:18,876 INFO /home/falcram/BSUIR/IGI/253504_DUBOVIK_8/IGI/LR5/ZooApp/Zoo/statistics.py changed, reloading.
+2024-06-10 16:19:03,759 INFO Contact 'Vika_Vet' was updated
+2024-06-10 16:19:39,756 INFO Contact 'Director' was created
+2024-06-10 16:20:08,847 INFO Tim called OrderCreateView | user's Timezone: Europe/Minsk
+2024-06-10 16:20:16,072 INFO OrderForm has no errors
+2024-06-10 16:20:16,080 INFO Promocode 1111 used by Tim
+2024-06-10 16:20:16,087 INFO Tim called SpecificOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:20:23,006 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-06-10 16:20:24,098 INFO Tim called SpecificOrderView | user's Timezone: Europe/Minsk
+2024-07-25 22:04:26,673 WARNING Not Found: /favicon.ico
+2024-07-25 22:22:48,251 INFO Tim called ReviewCreateView (status: client) | user's Timezone: Europe/Minsk
+2024-07-25 22:23:01,332 INFO ReviewForm has no errors)
+2024-07-25 22:23:01,340 INFO Review 'c' was created by Tim 
+2024-09-04 14:29:13,161 WARNING Not Found: /favicon.ico
+2024-09-04 14:33:17,727 INFO Tim called OrderCreateView | user's Timezone: Europe/Minsk
+2024-09-04 14:34:13,111 INFO Tim called UserOrderView | user's Timezone: Europe/Minsk
+2024-09-04 14:34:14,493 INFO Tim called SpecificOrderView | user's Timezone: Europe/Minsk
+2024-09-06 17:37:49,844 WARNING Not Found: /favicon.ico

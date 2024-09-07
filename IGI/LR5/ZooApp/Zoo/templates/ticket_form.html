@@ -58,10 +58,13 @@
         {% if user.is_authenticated %}
             {% if is_super %}
                 <a href="{% url 'logout' %}">Выйти</a>
+                <a href="{% url 'sales' %}">Продажи</a>
             {% elif user.is_staff %}
                 <a href="{% url 'logout' %}">Выйти</a>
             {% else %}
                 <a href="{% url 'logout' %}">Выйти</a>
+                <a href="{% url 'orders_list' user.id  %}">Мои заказы</a>
+                <a href="{% url 'create_order' user.id %}">Купить билет</a>
             {% endif %}
         {% else %}
         <a href="{% url 'login' %}">Войти</a>
