@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    {% block content %}
+
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <center><h2>Вход</h2>
+        <b>{{ form.as_p }}</b>
+        <button type="submit" >Вход</button>
+        <p>Вы ещё не зарегестрированы? <a href="{%url 'register' %}">Регистрация</a></p></center>
+    </form>
+
+    {% endblock content%}
+
+</body>
+</html>
