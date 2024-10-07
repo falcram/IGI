@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock title %}
+{% block content %}
+<h1>Корзина</h1>
+<ul class="delmarklist">
+    {% for item in cart_items %}
+    <li>
+        <h2>{{ item.ticket_date.date }}</h2>
+        <form  action="{% url 'changeamount_in_cart' item.id %}" method="POST">
+            {% csrf_token %}
+            <p>Количество:
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.ticket_date.available_quantity }}">
+            <button type="submit">Изменить количество</button>
+            </p>
+        </form>
+    </li>
+    {% empty %}
+    <li>Ваша корзина пуста.</li>
+    {% endfor %}
+</ul>
+<p>Общая стоимость: {{ total_cost }} руб.</p>
+<a href="{% url 'checkout' %}" type="button">Оплатить</a>
+<form action="{% url 'clear_cart' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Очистить корзину</button>
+</form>
+{% endblock content %}

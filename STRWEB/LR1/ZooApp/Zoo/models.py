@@ -7,11 +7,11 @@ import django.forms
 from django.urls import reverse
 from django.utils import timezone
 from datetime import time
-
+from datetime import timedelta
 
 class User(AbstractUser):
     #user = models.OneToOneField(User, on_delete=models.CASCADE)
-    status = (
+    status_choices = (
         ("client","client"),
         ("staff","staff")
     )
@@ -24,7 +24,7 @@ class User(AbstractUser):
         if value < 18 or value > 100:
             raise django.forms.ValidationError("Только для людей старше 18 лет.")
         
-    status = models.CharField(choices=status, default="client", max_length=6)
+    status = models.CharField(choices=status_choices, default="client", max_length=6)
     age = models.PositiveSmallIntegerField(validators=[validate_age], null= True)
     phone = models.CharField(max_length=15, validators=[validate_phone], null= True)
     address = models.CharField(max_length=255, null= True)
@@ -34,15 +34,6 @@ class User(AbstractUser):
     job_t = models.ForeignKey('Job_title',on_delete=models.PROTECT, null= True, blank=True)
     ward_animals = models.ManyToManyField('kind_of_animal',blank=True)
     
-    # def save(self, *args, **kwargs):
-    #     phone_pattern = re.compile(r'\+375\((29|33|44|25)\)\d{7}')
-    #     if not re.fullmatch(phone_pattern, str(self.phone)) or self.age < 18 or self.age > 100:
-
-    #         logging.exception(f"ValidationError, {self.phone} is in incorrect format OR 18 < {self.age} < 100")
-
-    #         raise django.forms.ValidationError("Error while creating user (Check phone number and age!)")
-    #     super().save(*args, **kwargs)
-
     def __str__(self):
         return self.first_name
     
@@ -94,12 +85,6 @@ class Job_title(models.Model):
     j_title = models.CharField(max_length=100,null=True, verbose_name='job title') 
     def __str__(self):
         return self.j_title
-    
-class News(models.Model):
-    title = models.TextField(max_length=120)
-    content = models.TextField()
-    image = models.ImageField(upload_to='images/')
-    date = models.DateTimeField(auto_now_add=True)
 
 class CompanyInfo(models.Model):
     def validate_phone(value):
@@ -112,10 +97,6 @@ class CompanyInfo(models.Model):
     text = models.TextField()
     logo = models.ImageField(upload_to='images/', null = True)
 
-class Promocode(models.Model):
-    code = models.CharField(max_length=10)
-    #discount = models.DecimalField(max_digits=5, decimal_places=2)
-    discount = models.FloatField()
 class FAQ(models.Model):
     question = models.CharField(max_length=255)
     answer = models.TextField()
@@ -142,53 +123,89 @@ class UsedDiscounts(models.Model):
     promocode = models.ForeignKey('Promocode', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+class Partner(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='logos/') 
+    website = models.URLField()
+
+    def __str__(self):
+        return self.name
+
+class Article(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    short_content = models.TextField()
+    image = models.ImageField(upload_to='images/', null=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
+    
+    def get_absolute_url(self):
+        return reverse('article_detail', args=[str(self.id)])
+    
+
+# Модель билета
 class Ticket(models.Model):
-    user = models.ForeignKey('User', related_name='ticket',on_delete=models.CASCADE, null=True)
-    price = models.FloatField()
-    date_of_visit = models.DateTimeField(null= True,auto_now_add=True)
-    #promocode = models.CharField(max_length=10,  null= True, blank=True)
-    promocode = models.ForeignKey('Promocode',related_name='ticket', null=True, blank=True, on_delete=models.SET_NULL)
-    is_canceled = models.BooleanField(default=False)
-    def use_discount(self, promocode):
-        if UsedDiscounts.objects.filter(promocode_id=promocode, user_id=self.user).exists():
-            return
-        self.price *= (100 - promocode.discount) / 100
-        self.save()
-        UsedDiscounts.objects.create(promocode=promocode, user=self.user)
+    name = models.CharField(max_length=100, default="Билет на посещение зоопарка")
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=100.00)  # Цена билета
+    max_quantity = models.PositiveIntegerField(default=100)  # Максимальное количество билетов на дату
+
+    def __str__(self):
+        return f"{self.name}"
+
+    def save(self, *args, **kwargs):
+        # Сохраняем билет
+        super().save(*args, **kwargs)
+        
+        # После сохранения создаем даты для доступных билетов на ближайшие 30 дней
+        for i in range(30):
+            date = timezone.now().date() + timedelta(days=i)
+            # Создаем запись о билетах на конкретную дату, если она еще не существует
+            TicketDate.objects.get_or_create(
+                ticket=self, 
+                date=date, 
+                defaults={'available_quantity': self.max_quantity}
+            )
 
 
-"""
+# Модель билетов для конкретных дат
+class TicketDate(models.Model):
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)  # Связь с моделью билета
+    date = models.DateField()  # Дата посещения
+    available_quantity = models.PositiveIntegerField()  # Доступное количество билетов на дату
+
+    def __str__(self):
+        return f"Билеты на {self.date}: осталось {self.available_quantity} из {self.ticket.max_quantity}"
 
 
-class UsedDiscounts(models.Model):
-    promocode = models.ForeignKey(Promocode, on_delete=models.CASCADE)
+# Модель элементов корзины
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Пользователь
+    ticket_date = models.ForeignKey(TicketDate, on_delete=models.CASCADE)  # Связанная дата билета
+    quantity = models.PositiveIntegerField(default=0)  # Количество билетов в корзине
+
+    def __str__(self):
+        return f"{self.quantity} билетов на {self.ticket_date.date}"
+
+
+# Модель промокода для скидок
+
+class PromoCode(models.Model):
+    code = models.CharField(max_length=50, unique=True)  # Промокод
+    discount = models.DecimalField(max_digits=5, decimal_places=2)  # Скидка в процентах
+
+    def __str__(self):
+        return f"Промокод {self.code} со скидкой {self.discount}%"
+
+
+# Модель заказа
+class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    items = models.ManyToManyField(CartItem)
+    promo_code = models.ForeignKey(PromoCode, null=True, blank=True, on_delete=models.SET_NULL)  # Промокод
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_paid = models.BooleanField(default=False)
 
-
-
-class FAQ(models.Model):
-    question = models.CharField(max_length=255)
-    answer = models.TextField()
-    date = models.DateField(auto_now_add=True)
-
-
-class Contact(models.Model):
-    description = models.TextField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='images/')
-
-
-
-class Vacancy(models.Model):
-    name = models.CharField(max_length=20)
-    description = models.TextField()
-    need = models.TextField()
-
-
-class Review(models.Model):
-    title = models.CharField(max_length=100)
-    rating = models.IntegerField()
-    text = models.TextField()
-    date = models.DateField(auto_now_add=True)
-    user = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
-"""
+    def get_total_cost(self):
+        total = sum(item.ticket_date.ticket.price * item.quantity for item in self.items.all())
+        if self.promo_code:
+            total = total - (total * (self.promo_code.discount / 100))
+        return total
