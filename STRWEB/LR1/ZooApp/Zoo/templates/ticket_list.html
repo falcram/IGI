@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Ticket List{% endblock title %}
+{% block content %}
+<h1>Выберите дату для покупки билета</h1>
+<ul class="delmarklist">
+    {% for ticket_date in ticket_dates %}
+    <li>
+        <h2>{{ ticket_date.date }}</h2>
+        <p>Доступно билетов: {{ ticket_date.available_quantity }}</p>
+        <p>Цена: {{ ticket_date.ticket.price }} руб.</p>
+        <form method="POST" action="{% url 'add_to_cart' ticket_date.id %}">
+            {% csrf_token %}
+            <label for="quantity">Количество билетов:</label>
+            <input type="number" name="quantity" value="1" min="1" max="{{ ticket_date.available_quantity }}">
+            <button type="submit">Добавить в корзину</button>
+        </form>
+    </li>
+    {% empty %}
+    <li>На данный момент нет доступных билетов.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

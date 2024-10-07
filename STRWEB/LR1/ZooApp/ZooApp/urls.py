@@ -28,7 +28,6 @@ user_patterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('news/', views.news, name='news'),
     path('animals/', views.animals, name='animals'),
     path('about/', views.about_company, name='about'),
     path('privacy-policy', views.privacy_policy, name='privacy_policy'),
@@ -51,12 +50,25 @@ urlpatterns = [
     path('contacts/<int:pk>/edit/', views.ContactUpdateView.as_view(), name='contact_edit'),
     path('contacts/<int:pk>/delete/', views.ContactDeleteView.as_view(), name='contact_delete'),
 
-    re_path(r'order/create/(?P<pk>\d+)/$', views.BuyTicket.as_view(), name='create_order'),
+    path('article/', views.article_list, name='article_list'),
+    path('article/<int:pk>/', views.article_detail, name='article_detail'),
+
+    
     re_path(r'user/(?P<pk>\d+)/', include(user_patterns)),
     path('order/<int:pk>/<int:jk>/', views.UserTicketView.as_view(), name='user_order'),
     path('order/<int:pk>/<int:jk>/cancel/', views.OrderCancelView.as_view(), name='order_cancel'),
     path('sales', statistics.sales, name='sales'),
+    path('htmlstudy', views.htmlstudy_view, name='htmlstudy'),
 
+    
+    path('ticket_list/', views.ticket_list, name='ticket_list'),
+    path('add-to-cart/<int:ticket_date_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/', views.cart_view, name='cart'),
+    path('checkout/', views.checkout, name='checkout'),
+    # Успешная оплата
+    path('success/', views.success_view, name='success'),
+    path('clear-cart/', views.clear_cart, name='clear_cart'),
+    path('changeamount-in-cart/<int:item_id>/', views.changeamount_in_cart, name='changeamount_in_cart'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

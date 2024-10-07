@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }}{% endblock title %}
+{% block content %}
+<section id = "News_detail">
+    <h1>{{ article.title }}</h1>
+    <img src="{{ article.image.url }}"height="400" width="550">
+    <p>{{ article.content }}</p>
+    <a href="{% url 'article_list' %}">Назад к списку статей</a>
+    <p>Опубликованно: {{ article.date|date:"d.m.Y" }}&nbsp;{{ article.date|time:"H:i" }}</p>
+</section>
+{% endblock content %}

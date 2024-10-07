@@ -1,0 +1,138 @@
+
+{% extends "base.html" %}
+{% block title %}HTML{% endblock title %}
+{% block content %}
+
+<header>
+    <h1>Добро пожаловать в наш Зоопарк!</h1>
+</header>
+
+<!-- Горизонтальная навигация -->
+
+<section id="home">
+    <h2>Пример листинга и сокращений</h2>
+    <p>Этот зоопарк содержит множество <abbr title="Exotic Animals">экзотических животных</abbr>, таких как тигры и львы.</p>
+</section>
+
+<section id="about">
+    <h2>Определения</h2>
+    <dl>
+        <dt>Тигр</dt>
+        <dd>Большая кошка с полосами</dd>
+        <dt>Лев</dt>
+        <dd>Король зверей</dd>
+    </dl>
+
+    <h2>Цитаты</h2>
+    <blockquote>
+        "Земля не принадлежит человеку, человек принадлежит Земле." – Человек природы
+    </blockquote>
+
+    <h2>Четверостишие</h2>
+    <p>Мы в зоопарке, здесь веселье,<br>Тигры играют в лучах солнца.<br>Слышны львы вдалеке, кричат с восторгом,<br>Природа зовет, приходи скорее!</p>
+</section>
+
+<nav class="unstyled">
+    <ul class="unstyled">
+        <li>Элемент 1 </li>
+        <li>Элемент 2 </li>
+    </ul>
+</nav>
+
+
+
+<section id="animals">
+    <h2>Ссылки</h2>
+    <p>Узнать больше о наших <a href="animals" target="_blank">животных</a>.</p>
+    <p>Скачать <a href="zoo-brochure.pdf" download>брошюру зоопарка</a>.</p>
+
+    <h2>Якоря</h2>
+    <a href="#table-example">Перейти к таблице с данными</a>
+</section>
+
+<section id="list-example">
+    <h2>Списки</h2>
+    <ul>
+        <li>Тигр</li>
+        <li>Лев</li>
+        <li>Слон</li>
+    </ul>
+    <ol>
+        <li>Пойти в зоопарк</li>
+        <li>Посмотреть на тигра</li>
+        <li>Увидеть льва</li>
+    </ol>
+</section>
+
+<section id="table-example">
+    <h2>Таблица с заголовочными ячейками</h2>
+    <table>
+        <thead>
+            <tr>
+                <th id="animal">Животное</th>
+                <th id="age">Возраст</th>
+                <th id="location">Местоположение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td headers="animal">Тигр</td>
+                <td headers="age">5</td>
+                <td headers="location" rowspan="2">Секция хищников</td>
+            </tr>
+            <tr>
+                <td headers="animal">Лев</td>
+                <td headers="age">8</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="form-example">
+    <h2>Форма</h2>
+    <form id="contactForm" onsubmit="return validateForm()">
+        <div class="container">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Эл. почта:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="visit-date">Дата визита:</label>
+            <input type="date" id="visit-date" name="visit-date" required><br><br>
+
+            <label for="animal-select">Какое животное хотите увидеть?</label>
+            <select id="animal-select" name="animal">
+                <option value="tiger">Тигр</option>
+                <option value="lion">Лев</option>
+                <option value="elephant">Слон</option>
+            </select><br><br>
+
+            <input type="submit" value="Отправить">
+            <p class="validation-message" id="validationMessage"></p>
+        </div>
+    </form>
+</section>
+
+{% load static %}
+<section id="media-example">
+    <h2>Медиа</h2>
+    <figure>
+        <img src="{% static 'images/adlion.jpg' %}" alt="Лев" class="responsive-img">
+        <figcaption>Лев в нашем зоопарке</figcaption>
+    </figure>
+    <h3>Видео</h3>
+    <video controls>
+        <source src="{% static 'images/lionroar.mp4' %}" type="video/mp4">
+        Ваш браузер не поддерживает воспроизведение видео.
+    </video>
+
+    <h3>Аудио</h3>
+    <audio controls>
+        <source src="lion-roar.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает воспроизведение аудио.
+    </audio>
+</section>
+
+{% endblock content %}
+

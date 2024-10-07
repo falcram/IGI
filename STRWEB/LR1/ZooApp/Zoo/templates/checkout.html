@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock title %}
+{% block content %}
+<h1>Оплата</h1>
+<p>Ваш заказ:</p>
+<ul>
+    {% for item in cart_items %}
+    <li>
+        {{ item.ticket_date.date }} ({{ item.quantity }} x {{ item.ticket_date.ticket.price }} руб.) = {{ item.total_price }} руб.
+    </li>
+    {% endfor %}
+</ul>
+<p>Итого: {{ total_cost }} руб.</p>
+<form method="POST">
+    {% csrf_token %}
+    <label for="promo_code">Введите промокод:</label>
+    <input type="text" name="promo_code">
+    <button type="submit">Применить промокод и оплатить</button>
+</form>
+{% endblock content %}

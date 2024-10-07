@@ -25,11 +25,11 @@ def home(request):
 
     current_date_utc = timezone.now()
     current_date_user_tz = current_date_utc.astimezone(user_timezone)
-    latest_article = News.objects.latest('date')
+    latest_article = Article.objects.latest('date')
     user_id = request.user.id
     is_staff = request.user.is_staff 
     is_super = request.user.is_superuser
-
+    partners = Partner.objects.all()  # Получаем всех партнеров из базы данных
     context = {
         'current_date_utc': current_date_utc.strftime('%d/%m/%Y %H:%M:%S'),
         'current_date_user_tz': current_date_user_tz.strftime('%d/%m/%Y %H:%M:%S'),
@@ -37,13 +37,10 @@ def home(request):
         'latest_article': latest_article, 
         'user_id': user_id, 
         'is_staff': is_staff, 
-        'is_super': is_super    
+        'is_super': is_super,
+        'partners': partners    
         }
     return render(request, 'home.html', context)
-
-def news(request):
-    news = News.objects.all().order_by('-date')
-    return render(request, 'news.html', {'news': news})
 
 def animals(request):
     animals = Animal.objects.all()
@@ -55,7 +52,7 @@ def about_company(request):
     return render(request, 'about.html', {'company_info': info, 'user_id': user_id})
 
 def promocodes(request):
-    promocodes = Promocode.objects.all()
+    promocodes = PromoCode.objects.all()
     return render(request, 'promocodes.html', {'promocodes': promocodes})
 
 def faqs(request):
@@ -69,7 +66,6 @@ def vacancies(request):
 def reviews(request):
     reviews = Review.objects.all()
     return render(request, 'reviews.html', {'reviews': reviews})
-
 
 class ReviewForm(forms.ModelForm):
     rating = forms.IntegerField(label='Оценка', min_value=1, max_value=5)
@@ -133,70 +129,30 @@ class ReviewDeleteView(View):
         if request.user.is_authenticated and review.user == request.user:
             review.delete()
         return redirect('reviews')
-    
-class RegistrationForm(UserCreationForm):
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
 
+class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        
-        fields = ['username', 'first_name', 'last_name', 'age', 'phone', 'address', 'password1', 'password2']
-        labels = {
-            'username': 'Имя пользователя',
-            'first_name': 'Имя',
-            'last_name': 'Фамилия',
-            'age': 'Возраст',
-            'phone': 'Телефон', 
-            'address': 'Адрес',
-            'password1': 'Пароль',
-            'password2': 'Повторите пароль',
-        }
+        fields = ['username', 'email', 'first_name', 'last_name', 'age', 'phone', 'address']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.status = 'client'  # Устанавливаем статус "client" по умолчанию
+        if commit:
+            user.save()
+        return user
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            if request.user.is_authenticated:
-                user.timezone = request.user.timezone
-            else:
-                user.timezone = get_localzone_name()
-            #user.set_password(user.cleaned_data['password'])
-            user.save()
-            # Дополнительные действия после успешной регистрации
-            login(request, user)
-            return redirect('home')  # Перенаправление на главную страницу
+            user = form.save()
+            login(request, user)  # Автоматически авторизуем пользователя после регистрации
+            return redirect('home')  # Переход на главную страницу после успешной регистрации
     else:
-        form = RegistrationForm()
-    return render(request, 'registration.html', {'form': form})
+        form = CustomUserCreationForm()
 
-"""class UserRegistrationView(CreateView):
-
-    def get(self, request, *args, **kwargs):
-        form = RegistrationForm()
-        return render(request, 'registration.html', {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            logging.info("Registration form has no errors")
-            user = form.save(commit=False)#commit=False
-            #user.save()
-
-            if request.user.is_authenticated:
-                user.timezone = request.user.timezone
-            else:
-                user.timezone = get_localzone_name()
-                        
-            user.save()
-
-            logging.info(f"{user.username} REGISTER (status: {user.status}) | user's Timezone: {user.timezone}")
-            return redirect('login')
-        else:
-            logging.warning("Registration form is invalid")
-            return render(request, 'registration.html', {'form': form})
-"""
+    return render(request, 'register.html', {'form': form})
 
 def my_login_view(request):
     if request.method == 'POST':
@@ -272,14 +228,13 @@ class ContactUpdateView(View):
             return redirect('contacts') 
         return render(request, 'contacts_form.html', {'form': form, 'contact': contact})
 
-
 class ContactDeleteView(View):
     def post(self, request, pk):
         contact = get_object_or_404(Contact, pk=pk)
         contact.delete()
         return redirect('contacts')  
 
-
+"""
 class TicketForm(forms.Form):
     date_of_visit = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     promocode = forms.CharField(max_length=10, required=False)
@@ -324,7 +279,7 @@ class BuyTicket(View):
         else:
             logging.error(f"User is not authenticated")
             return HttpResponse('Войдите в аккуант чтобы сделать заказ')
-
+"""
 class UserTicketView(View):
     def get(self, request, pk, jk, *args, **kwargs):
         if request.user.is_authenticated and request.user.id==int(pk) and Ticket.objects.filter(user_id=int(pk), id=int(jk)).exists():
@@ -356,3 +311,118 @@ class OrderCancelView(View):
                 logging.info(f"Order '{ticket.id}' was canceled by {request.user.username}")
             return redirect('user_order', pk=pk, jk=jk)
         return HttpResponseNotFound("Страница не найдена")
+    
+def htmlstudy_view(request):
+    return render(request, 'htmlstudy.html')
+
+def article_list(request):
+    articles = Article.objects.all().order_by('-date')
+    return render(request, 'article_list.html', {'articles': articles})
+
+def article_detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    return render(request, 'article_detail.html', {'article': article})
+
+
+def ticket_list(request):
+    # Извлекаем все доступные даты для билетов
+    ticket_dates = TicketDate.objects.filter(available_quantity__gt=0).order_by('date')
+    
+    return render(request, 'ticket_list.html', {
+        'ticket_dates': ticket_dates
+    })
+
+def add_to_cart(request, ticket_date_id):
+    ticket_date = get_object_or_404(TicketDate, id=ticket_date_id)
+
+    if request.method == 'POST':
+        print("POST data: ",request.POST, sep="\n")
+        quantity = int(request.POST.get('quantity', 1))
+        print(quantity)
+        # Проверяем доступное количество билетов
+        if ticket_date.available_quantity < quantity:
+            return render(request, 'error.html', {'error': 'Недостаточно билетов на выбранную дату'})
+
+        # Если всё ок, создаем или обновляем элемент корзины
+        cart_item, created = CartItem.objects.get_or_create(user=request.user, ticket_date=ticket_date)
+        cart_item.quantity += quantity
+        cart_item.save()
+
+        # Уменьшаем количество доступных билетов
+        ticket_date.available_quantity -= quantity
+        ticket_date.save()
+
+    return redirect('cart')
+
+def cart_view(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    print(cart_items)
+    total_cost = sum(item.ticket_date.ticket.price * item.quantity for item in cart_items)
+    
+    return render(request, 'cart.html', {
+        'cart_items': cart_items,
+        'total_cost': total_cost
+    })
+
+# Страница оплаты
+def checkout(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    if request.method == 'POST':
+        promo_code = request.POST.get('promo_code', None)
+        
+        # Проверяем промокод
+        if promo_code:
+            try:
+                promo = PromoCode.objects.get(code=promo_code)
+            except PromoCode.DoesNotExist:
+                return render(request, 'error.html', {'error': 'Неверный промокод'})
+        else:
+            promo = None
+
+        # Создаем заказ
+        order = Order.objects.create(user=request.user, promo_code=promo)
+        order.items.set(cart_items)
+        order.is_paid = True  # Имитация оплаты
+        order.save()
+        print(order.get_total_cost())
+        
+        message = f"{order.get_total_cost()} руб. Оплата прошла успешно!"
+        cart_items.delete()
+        return render(request, 'success.html', {
+        'message': message
+        })
+
+    total_cost = sum(item.ticket_date.ticket.price * item.quantity for item in cart_items)
+    return render(request, 'checkout.html', {'cart_items': cart_items, 'total_cost': total_cost})
+
+def success_view(request, price):
+    message = f"{price} руб. Оплата прошла успешно!"
+    return render(request, 'success.html', {
+        'message': message
+    })
+
+def clear_cart(request):
+    # Удаляем все элементы корзины текущего пользователя
+    cart_item = CartItem.objects.filter(user=request.user)
+    for item in cart_item:
+        ticket_date = item.ticket_date
+        ticket_date.available_quantity += item.quantity
+        ticket_date.save()
+    CartItem.objects.filter(user=request.user).delete()
+    return redirect('cart')  # П
+
+
+def changeamount_in_cart(request, item_id):
+    print("changeamount_in_cart start")
+    cart_item = get_object_or_404(CartItem, id=item_id)
+
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', cart_item.quantity))
+        if quantity != cart_item.quantity:
+            ticket_date = cart_item.ticket_date
+            ticket_date.available_quantity += cart_item.quantity - quantity
+            ticket_date.save()
+            cart_item.quantity=quantity
+            cart_item.save()
+
+    return redirect('cart')
