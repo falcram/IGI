@@ -15,10 +15,14 @@
     {% load static %}
 </section>
 
+{% if user.is_authenticated %}
+
 <section id = "catalog">
     <h2 translate="yes">Каталог</h2>
     <a href="{% if user.is_authenticated %}{% url 'ticket_list' %}{% else %}{% url 'login' %}{% endif %}"><img src="{% static 'images/Ticket.avif' %}" alt="Картинка 1" class="ad-parms" draggable="true"></a>
 </section>
+
+{% endif %} 
 
 <section id="Ad">
     <h2>Ad</h2>
@@ -43,4 +47,28 @@
     </ul>
 </section>
 
+<pre hidden>
+<code>
+def home(request):
+    <var>user_timezone</var> = get_localzone()
+    <var>current_date_utc</var> = timezone.now()
+    <var>current_date_user_tz</var> = current_date_utc.astimezone(user_timezone)
+    <var>latest_article</var> = Article.objects.latest('date')
+    <var>user_id</var> = request.user.id
+    <var>is_staff</var> = request.user.is_staff 
+    <var>is_super</var> = request.user.is_superuser
+    partners = Partner.objects.all()  # Получаем всех партнеров из базы данных
+    context = {
+        'current_date_utc': current_date_utc.strftime('%d/%m/%Y %H:%M:%S'),
+        'current_date_user_tz': current_date_user_tz.strftime('%d/%m/%Y %H:%M:%S'),
+        'user_timezone': user_timezone.key,
+        'latest_article': latest_article, 
+        'user_id': user_id, 
+        'is_staff': is_staff, 
+        'is_super': is_super,
+        'partners': partners    
+        }
+    return render(request, 'home.html', context)
+</code>
+</pre>
 {% endblock content %}

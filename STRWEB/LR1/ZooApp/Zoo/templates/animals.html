@@ -1,14 +1,27 @@
 {% extends "base.html" %}
 {% block title %}Animals{% endblock title %}
 {% block content %}
-<h1>Животные </h1>
-    {% for ani in animals %}
-        <div>
-            <h2>{{ ani.name }}</h2>
-            <p>Family: {{ ani.kind.family }}</p>
-            <p>Kind: {{ ani.kind }}</p>
-            <img src="{{ ani.image.url }}"height="200" width="250">
-
-        </div>
-    {% endfor %}
+    <section id="Animals-table">
+        <h1>Животные </h1>
+        <table border="5" bordercolor="#7a4e0f" frame="border">
+            <thead>
+                <tr>
+                    <th id="family">Семейство</th>
+                    <th id="kind">Вид</th>
+                    <th id="name">Кличка</th>
+                    <th id="image">Фото</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ani in animals %}
+                    <tr>
+                        <td headers="family">{{ ani.kind.family }}</td>
+                        <td headers="kind">{{ ani.kind }}</td>
+                        <td headers="name">{{ ani.name }}</td>
+                        <td headers="image"><img src="{{ ani.image.url }}"height="120" width="165"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>    
 {% endblock content %}

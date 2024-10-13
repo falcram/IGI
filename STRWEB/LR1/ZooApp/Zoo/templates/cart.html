@@ -8,10 +8,11 @@
         <h2>{{ item.ticket_date.date }}</h2>
         <form  action="{% url 'changeamount_in_cart' item.id %}" method="POST">
             {% csrf_token %}
-            <p>Количество:
-            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.ticket_date.available_quantity }}">
-            <button type="submit">Изменить количество</button>
-            </p>
+            <fieldset>
+                <legend>Количество:</legend>
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.ticket_date.available_quantity }}">
+                <button type="submit">Изменить количество</button>
+            </fieldset>
         </form>
     </li>
     {% empty %}

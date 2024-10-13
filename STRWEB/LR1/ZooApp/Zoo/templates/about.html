@@ -4,41 +4,57 @@
 <div class="centered-image">
     <img src="{{company_info.logo.url}}" class="company-image">
 </div>
+<a href="#certificate">Сертификат</a>
+<p><q cite="https://ru.citaty.net/temy/zoologiia">Жанр в искусстве, как вид в зоологии, — это ограниченный репертуар возможностей.</q></p>
 
 <section id="company-media">
 {% load static %}
+<a href="{% static 'media/broshura.jpg' %}" download="ZooWorld brochure">Брошюра</a>
 <h3>Видео</h3>
-<video controls>
+<video controls muted>
     <source src="{% static 'media/lionroar.mp4' %}" type="video/mp4">
     Ваш браузер не поддерживает воспроизведение видео.
 </video>
 <h3>Аудио</h3>
-<audio controls>
+<audio controls muted>
     <source src="{% static 'media/audio_hero_AnimalLion+TL01_41.mp3' %}" type="audio/mp3">
     Ваш браузер не поддерживает воспроизведение аудио.
 </audio>
 </section>
 
-<h2>{{ latest_article.title }}</h2>
-<p>{{ company_info.zooname }}</p>
-<p><a href="mailto:{{ company_info.email }}?subject=Вопрос">{{ company_info.email }}</a></p>
-<p><a href="{{ company_info.phone }}">{{ company_info.phone }}</a></p>
-<p>{{ company_info.text }}</p>
 
+<address itemscope itemtype="https://schema.org/Organization">
+    <h2 itemprop="name">{{ company_info.zooname }}</h2>
+    <p>Email: <a href="mailto:{{ company_info.email }}?subject=Вопрос" itemprop="email">{{ company_info.email }}</a></p>
+    <p>Phone: <a href="tel:{{ company_info.phone }}" itemprop="telephone">{{ company_info.phone }}</a></p>
+</address>
+  
+<article itemscope itemtype="https://schema.org/Article">
+    <p itemprop="articleBody"><mark>{{ company_info.text }}</mark></p>
+</article>
+
+<section id="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2353.5922939188627!2d27.634803449130104!3d53.850115048763556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbd32ed7f7e83b%3A0xa365e36f8614427b!2sZoopark!5e0!3m2!1sen!2sby!4v1728645091719!5m2!1sen!2sby"
+        width="600"
+        height="450"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+</section>
 <section id="certificate">
 
-<div class="certificate-container"></div>
-    <h1>СЕРТИФИКАТ ГОСУДАРСТВЕННОЙ РЕГИСТРАЦИИ</h1>
+<div class="certificate-container" accesskey="s">
+    <h1 accesskey="y">СЕРТИФИКАТ ГОСУДАРСТВЕННОЙ РЕГИСТРАЦИИ</h1>
 
     <p>
-        Настоящим удостоверяется, что <span class="details">ZooWorld</span>, расположенный по адресу:
-        <span class="details">ул. Зоопарковая 1</span>, прошел государственную регистрацию в соответствии с
-        законодательством Республики Беларусь, регулирующим деятельность зоопарков и других учреждений по содержанию и демонстрации
+        Настоящим удостоверяется, что <span class="details"> <em>ZooWorld</em></span>, расположенный по адресу:
+        <span class="details"><em>ул. Зоопарковая 1</em></span>, прошел государственную регистрацию в соответствии с
+        законодательством <abbr title="Республика Беларусь">РБ</abbr>, регулирующим деятельность зоопарков и других учреждений по содержанию и демонстрации
         животных.
     </p>
 
     <p>
-        Данный сертификат подтверждает, что зоопарк соответствует требованиям законодательства в части содержания,
+        Данный сертификат подтверждает, что зоопарк <b>соответствует</b> требованиям законодательства в части содержания,
         ухода и охраны животных, соблюдает нормы ветеринарной и экологической безопасности, а также обеспечивает
         необходимые условия для образовательной и культурной деятельности, направленной на охрану и сохранение
         биоразнообразия.

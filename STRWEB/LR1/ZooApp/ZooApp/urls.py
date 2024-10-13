@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path, include
-from Zoo import views , statistics
+from Zoo import views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -57,7 +57,6 @@ urlpatterns = [
     re_path(r'user/(?P<pk>\d+)/', include(user_patterns)),
     path('order/<int:pk>/<int:jk>/', views.UserTicketView.as_view(), name='user_order'),
     path('order/<int:pk>/<int:jk>/cancel/', views.OrderCancelView.as_view(), name='order_cancel'),
-    path('sales', statistics.sales, name='sales'),
     path('htmlstudy', views.htmlstudy_view, name='htmlstudy'),
 
     
@@ -69,6 +68,8 @@ urlpatterns = [
     path('success/', views.success_view, name='success'),
     path('clear-cart/', views.clear_cart, name='clear_cart'),
     path('changeamount-in-cart/<int:item_id>/', views.changeamount_in_cart, name='changeamount_in_cart'),
+
+    path('order-list/', views.order_list, name='order_list'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

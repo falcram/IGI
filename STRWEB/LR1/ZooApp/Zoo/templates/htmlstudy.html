@@ -9,11 +9,6 @@
 
 <!-- Горизонтальная навигация -->
 
-<section id="home">
-    <h2>Пример листинга и сокращений</h2>
-    <p>Этот зоопарк содержит множество <abbr title="Exotic Animals">экзотических животных</abbr>, таких как тигры и львы.</p>
-</section>
-
 <section id="about">
     <h2>Определения</h2>
     <dl>
@@ -39,8 +34,6 @@
     </ul>
 </nav>
 
-
-
 <section id="animals">
     <h2>Ссылки</h2>
     <p>Узнать больше о наших <a href="animals" target="_blank">животных</a>.</p>
@@ -64,46 +57,22 @@
     </ol>
 </section>
 
-<section id="table-example">
-    <h2>Таблица с заголовочными ячейками</h2>
-    <table>
-        <thead>
-            <tr>
-                <th id="animal">Животное</th>
-                <th id="age">Возраст</th>
-                <th id="location">Местоположение</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td headers="animal">Тигр</td>
-                <td headers="age">5</td>
-                <td headers="location" rowspan="2">Секция хищников</td>
-            </tr>
-            <tr>
-                <td headers="animal">Лев</td>
-                <td headers="age">8</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
 <section id="form-example">
     <h2>Форма</h2>
-    <form id="contactForm" onsubmit="return validateForm()">
+    <form id="contactForm">
         <div class="container">
             <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required><br><br>
+            <input type="text" id="name" name="name" tabindex="1" required><br><br>
 
             <label for="email">Эл. почта:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <input type="email" id="email" name="email" tabindex="3" required><br><br>
 
             <label for="visit-date">Дата визита:</label>
-            <input type="date" id="visit-date" name="visit-date" required><br><br>
+            <input type="date" id="visit-date" name="visit-date" tabindex="2" required><br><br>
 
             <label for="animal-select">Какое животное хотите увидеть?</label>
             <select id="animal-select" name="animal">
-                <option value="tiger">Тигр</option>
+                <option selected value="tiger">Тигр</option>
                 <option value="lion">Лев</option>
                 <option value="elephant">Слон</option>
             </select><br><br>
@@ -114,25 +83,37 @@
     </form>
 </section>
 
-{% load static %}
-<section id="media-example">
-    <h2>Медиа</h2>
-    <figure>
-        <img src="{% static 'images/adlion.jpg' %}" alt="Лев" class="responsive-img">
-        <figcaption>Лев в нашем зоопарке</figcaption>
-    </figure>
-    <h3>Видео</h3>
-    <video controls>
-        <source src="{% static 'images/lionroar.mp4' %}" type="video/mp4">
-        Ваш браузер не поддерживает воспроизведение видео.
-    </video>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2353.5922939188627!2d27.634803449130104!3d53.850115048763556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbd32ed7f7e83b%3A0xa365e36f8614427b!2sZoopark!5e0!3m2!1sen!2sby!4v1728645091719!5m2!1sen!2sby"
+    width="600"
+    height="450"
+    allowfullscreen=""
+    loading="lazy">
+</iframe>
 
-    <h3>Аудио</h3>
-    <audio controls>
-        <source src="lion-roar.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает воспроизведение аудио.
-    </audio>
-</section>
+<form>
+    <input type="text" value="" placeholder="Введите текст"><br>
+    <input type="password" value="" placeholder="Введите пароль"><br>
+    <input type="email" value="" placeholder="example@example.com"><br>
+    <input type="url" value="" placeholder="https://example.com"><br>
+    <input type="tel" value="" placeholder="+1234567890"><br>
+    <input type="number" value="" min="0" max="100" placeholder="Введите число"><br>
+    <input type="range" value="50" min="0" max="100"><br>
+    <input type="date" value=""><br>
+    <input type="time" value=""><br>
+    <input type="datetime-local" value=""><br>
+    <input type="month" value=""><br>
+    <input type="week" value=""><br>
+    <input type="color" value="#000000"><br>
+    <input type="checkbox" checked> Согласен с условиями<br>
+    <input type="radio" name="gender" value="male"> Мужской<br>
+    <input type="radio" name="gender" value="female"> Женской<br>
+    <input type="file"><br>
+    <input type="submit" value="Отправить"><br>
+    <input type="reset" value="Сбросить"><br>
+    <input type="button" value="Кнопка" onclick="alert('Кнопка нажата!')"><br>
+    <input type="image" src="submit.png" alt="Отправить"><br>
+    <input type="hidden" name="user_id" value="">
+</form>
 
 {% endblock content %}
 

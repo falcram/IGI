@@ -203,6 +203,7 @@ class Order(models.Model):
     promo_code = models.ForeignKey(PromoCode, null=True, blank=True, on_delete=models.SET_NULL)  # Промокод
     created_at = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)
+    total_price = models.DecimalField(max_digits=15, decimal_places=2, default=0)
 
     def get_total_cost(self):
         total = sum(item.ticket_date.ticket.price * item.quantity for item in self.items.all())
