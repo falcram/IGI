@@ -3,12 +3,11 @@
 {% block content %}
 <h1>Вопрос-Ответ</h1>
     {% for faq in faqs %}
-        <div>
-            <h2>Вопрос</h2>
-            <p>{{ faq.question }}</p>
-            <h2>Ответ</h2>
+        <details>
+            <summary>{{ faq.question }}</summary>
             <p>{{ faq.answer }}</p>
             <p>Дата: {{ faq.date|date:"d.m.Y" }}</p>
         </div>
+        </details>
     {% endfor %}
 {% endblock content %}

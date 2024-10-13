@@ -234,52 +234,6 @@ class ContactDeleteView(View):
         contact.delete()
         return redirect('contacts')  
 
-"""
-class TicketForm(forms.Form):
-    date_of_visit = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    promocode = forms.CharField(max_length=10, required=False)
-
-class BuyTicket(View):
-    def get(self, request,pk, *args, **kwargs):
-        if request.user.is_authenticated and request.user.status == "client":
-            logging.info(f"{request.user.username} called OrderCreateView | user's Timezone: {request.user.timezone}")
-            form = TicketForm()
-            ticket = Ticket()
-            return render(request, 'ticket_form.html', {'form': form, 'ticket': ticket})
-    def post(self, request,pk, *args, **kwargs):
-        if request.user.is_authenticated and request.user.status == "client":
-            form = TicketForm(request.POST)
-            if form.is_valid():
-                logging.info(f"OrderForm has no errors")
-                Date_of_visit = form.cleaned_data['date_of_visit']
-                code = form.cleaned_data['promocode']
-                Price = 10.0
-                def is_weekend():
-                    return Date_of_visit.weekday() in [5, 6]
-                
-                print(type(Date_of_visit))
-
-                promocode = Promocode.objects.filter(code=code).first()
-                
-                ticket =Ticket.objects.create(
-                    user=request.user,
-                    promocode=promocode,
-                    price = Price,
-                    date_of_visit = Date_of_visit
-                )
-                if promocode:
-                        logging.info(f"Promocode {promocode.code} used by {request.user.username}")
-                        ticket.use_discount(promocode)
-                url = reverse('user_order', kwargs={"pk": ticket.user_id, "jk": ticket.id})
-                return redirect(url)
-            return render(request, 'ticket_form.html', {'form': form, 'ticket': ticket})
-        elif request.user.is_authenticated and request.user.status == "staff":
-            logging.error(f"{request.user.username} has status {request.user.status}")
-            return HttpResponseNotFound("Только для клиентов")
-        else:
-            logging.error(f"User is not authenticated")
-            return HttpResponse('Войдите в аккуант чтобы сделать заказ')
-"""
 class UserTicketView(View):
     def get(self, request, pk, jk, *args, **kwargs):
         if request.user.is_authenticated and request.user.id==int(pk) and Ticket.objects.filter(user_id=int(pk), id=int(jk)).exists():
@@ -383,10 +337,11 @@ def checkout(request):
         order = Order.objects.create(user=request.user, promo_code=promo)
         order.items.set(cart_items)
         order.is_paid = True  # Имитация оплаты
+        order.total_price = order.get_total_cost()
         order.save()
-        print(order.get_total_cost())
+        print(order.total_price)
         
-        message = f"{order.get_total_cost()} руб. Оплата прошла успешно!"
+        message = f"{order.total_price} руб. Оплата прошла успешно!"
         cart_items.delete()
         return render(request, 'success.html', {
         'message': message
@@ -426,3 +381,7 @@ def changeamount_in_cart(request, item_id):
             cart_item.save()
 
     return redirect('cart')
+
+def order_list(request):
+    orders = Order.objects.all()  # Получаем все заказы
+    return render(request, 'order_list.html', {'orders': orders})

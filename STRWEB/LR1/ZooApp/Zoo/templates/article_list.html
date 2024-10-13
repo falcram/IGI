@@ -5,11 +5,11 @@
 <h2>News</h2>
     <ul class="delmarklist">
     {% for article in articles %}
-        <li>
-            <h3>{{ article.title }}</h3>
-            <img src="{{ article.image.url }}"height="400" width="550">
-            <p>{{ article.short_content }}</p>
-            <a href="{{ article.get_absolute_url }}">Читать далее</a>
+        <li itemscope itemtype="https://schema.org/Article">
+            <h3 itemprop="headline">{{ article.title }}</h3>
+            <img src="{{ article.image.url }}" height="400" width="550" alt="{{ article.title }}" itemprop="image">
+            <p itemprop="description">{{ article.short_content }}</p>
+            <a href="{{ article.get_absolute_url }}" itemprop="url">Читать далее</a>
             <p>Опубликованно: {{ article.date|date:"d.m.Y" }}&nbsp;{{ article.date|time:"H:i" }}</p>
         </li>
     {% endfor %}
