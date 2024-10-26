@@ -6402,3 +6402,406 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'sales' not found. 'sales' is
 2024-10-11 16:52:30,082 WARNING Not Found: /submit.png
 2024-10-11 19:06:18,198 WARNING Not Found: /submit.png
 2024-10-11 19:09:07,755 WARNING Not Found: /submit.png
+2024-10-13 22:01:22,418 ERROR Internal Server Error: /static/media/lionroar.mp4
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:01:22,431 ERROR Internal Server Error: /static/media/audio_hero_AnimalLion+TL01_41.mp3
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:01:52,075 ERROR Internal Server Error: /static/media/lionroar.mp4
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:01:52,090 ERROR Internal Server Error: /static/media/audio_hero_AnimalLion+TL01_41.mp3
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:02:21,388 ERROR Internal Server Error: /static/media/lionroar.mp4
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:02:21,402 ERROR Internal Server Error: /static/media/audio_hero_AnimalLion+TL01_41.mp3
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:02:31,605 ERROR Internal Server Error: /static/media/broshura.jpg
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:06:23,145 ERROR Internal Server Error: /static/media/lionroar.mp4
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:06:23,145 ERROR Internal Server Error: /static/media/audio_hero_AnimalLion+TL01_41.mp3
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:12:17,809 ERROR Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+2024-10-13 22:12:17,824 WARNING Bad Request: /
+2024-10-13 22:12:18,823 ERROR Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+2024-10-13 22:12:18,836 WARNING Bad Request: /
+2024-10-13 22:12:39,974 WARNING Bad Request: /
+2024-10-13 22:12:40,924 ERROR Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+2024-10-13 22:12:40,934 WARNING Bad Request: /
+2024-10-13 22:12:41,063 ERROR Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+2024-10-13 22:12:41,074 WARNING Bad Request: /
+2024-10-13 22:12:41,730 ERROR Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.100.2'. You may need to add '192.168.100.2' to ALLOWED_HOSTS.
+2024-10-13 22:12:41,740 WARNING Bad Request: /
+2024-10-13 22:13:08,888 ERROR Internal Server Error: /static/css/styles.css
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:13:08,900 ERROR Internal Server Error: /static/images/adlion.jpg
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:13:08,915 ERROR Internal Server Error: /static/images/adzoo.jpeg
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:13:08,927 ERROR Internal Server Error: /static/images/adrhino.jpg
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:13:09,024 ERROR Internal Server Error: /static/images/Licon.png
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:13:09,041 ERROR Internal Server Error: /static/images/Licon.png
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/views/static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/_os.py", line 17, in safe_join
+    final_path = abspath(join(base, *paths))
+                         ^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 76, in join
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-10-13 22:15:37,861 WARNING Not Found: /submit.png
+2024-10-14 17:37:01,445 WARNING Bad Request: /
+2024-10-14 17:37:02,666 WARNING Bad Request: /favicon.ico
+2024-10-14 17:37:03,806 ERROR Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+2024-10-14 17:37:03,816 WARNING Bad Request: /
+2024-10-14 17:37:04,217 ERROR Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+2024-10-14 17:37:04,227 WARNING Bad Request: /favicon.ico
+2024-10-14 17:37:38,299 WARNING Bad Request: /
+2024-10-14 17:37:38,928 ERROR Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+2024-10-14 17:37:38,938 WARNING Bad Request: /favicon.ico
+2024-10-14 17:37:40,054 ERROR Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+2024-10-14 17:37:40,064 WARNING Bad Request: /
+2024-10-14 17:37:40,674 ERROR Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fulcrum/BSUIR/IGI/253504_DUBOVIK_8/STRWEB/LR1/zooenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.117.237'. You may need to add '192.168.117.237' to ALLOWED_HOSTS.
+2024-10-14 17:37:40,686 WARNING Bad Request: /favicon.ico
+2024-10-14 17:51:46,157 INFO tolik called ReviewCreateView (status: client) | user's Timezone: Europe/Minsk
+2024-10-14 17:53:32,712 INFO ReviewForm has no errors)
+2024-10-14 17:53:32,719 INFO Review 'Обсулуживание' was created by tolik 
+2024-10-14 17:55:50,212 WARNING Not Found: /submit.png
+2024-10-14 20:09:45,059 WARNING Not Found: /submit.png
+2024-10-14 20:10:12,402 WARNING Not Found: /submit.png
+2024-10-14 20:10:30,340 WARNING Not Found: /submit.png
+2024-10-26 01:00:24,062 WARNING Bad Request: /
