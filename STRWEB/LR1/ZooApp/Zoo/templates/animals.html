@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Animals{% endblock title %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/animals.css' %}">
+
     <section id="Animals-table">
-        <h1>Животные </h1>
-        <table border="5" bordercolor="#7a4e0f" frame="border">
+        <h1 class="tablehead">Животные </h1>
+        <table >
             <thead>
                 <tr>
                     <th id="family">Семейство</th>

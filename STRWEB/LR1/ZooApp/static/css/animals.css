@@ -1,0 +1,43 @@
+table {
+    border-collapse: collapse; /* Убирает двойные линии между ячейками */
+    width: 80%; /* Ширина таблицы */
+    margin: 0 auto; /* Центрирование таблицы */
+    background-color: white; /* Цвет фона таблицы */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Граница ячеек */
+    padding: 10px; /* Отступы внутри ячеек */
+    text-align: center; /* Горизонтальное выравнивание текста */
+    vertical-align: middle; /* Вертикальное выравнивание текста */
+}
+
+td:empty {
+    background-color: #e0e0e0; /* Цвет фона для пустых ячеек */
+}
+
+thead {
+    background-color: #4e6824; /* Цвет фона заголовка */
+    color: white; /* Цвет текста заголовка */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #cc9329; /* Цвет фона для четных строк */
+}
+tbody tr:nth-child(odd){
+    background-color: #5daa23; /* Цвет фона для четных строк */
+}
+tbody tr:nth-child(3n){
+    background-color: #515b4a; /* Цвет фона для четных строк */
+}
+
+tbody tr:hover {
+    background-color: #d6db3f; /* Цвет фона при наведении на строку */
+}
+
+.tablehead{
+    font-size: 1.5em;
+    margin: 10px;
+    font-weight: bold;  
+    text-align: center;  
+}

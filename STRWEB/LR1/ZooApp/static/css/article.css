@@ -1,0 +1,50 @@
+.news-content{
+    text-indent: 30px; 
+    padding: 20px; 
+    margin: 10px;
+    line-height: 1.5;
+    font-variant-caps: all-small-caps; /* капители */
+    word-spacing: 5px; /* Интервал между словами */
+    letter-spacing: 1px;
+    word-break: break-all; /* Разрыв слов */
+    overflow-wrap: break-word;
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    position: relative;
+}
+
+
+
+
+.multi-column {
+    column-count: 2; /* Количество колонок */
+    column-gap: 20px; /* Промежуток между колонками */
+}
+
+
+
+/* Не посещенные ссылки */
+a {
+    color: blue;
+}
+
+/* Посещенные ссылки */
+a:visited {
+    color: rgb(255, 30, 0);
+}
+
+/* При наведении курсора */
+a:hover {
+    text-decoration: underline;
+    color: rgb(239, 255, 18);
+}
+
+/* При нажатии */
+a:active {
+    color: orange;
+}
+
+/* Элементы в фокусе */
+a:focus {
+    outline: 2px dashed green;
+}

@@ -2,17 +2,29 @@
 {% block title %}HOME{% endblock title %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+<script src="{% static 'script/slider.js' %}"></script>
+
+
+
+<h1 class="company-name">ZOO WORLD</h1>
 <div>
     <p>Текущая дата и время (UTC): <time datetime="{{ current_date_utc }}">{{ current_date_utc }}</time></p>
     <p>Текущая дата и время ({{ user_timezone }}):<time datetime="{{ current_date_user_tz }}"> {{ current_date_user_tz }}</time></p>
 </div>
 <section id="news">
-    <h2 translate="yes">{{ latest_article.title }}</h2>
-    <img src="{{ latest_article.image.url }}"height="400" width="550">
-    <p translate="yes" title="Последняя новость!">{{ latest_article.content }}</p>
-    <p translate="yes">Опубликовано: {{ latest_article.date|date:"d.m.Y" }}&nbsp;{{ latest_article.date|time:"H:i" }}</p>
-    
     {% load static %}
+
+    <div class="article-container">
+        <h2 translate="yes">{{ latest_article.title }}</h2>
+        <img src="{{ latest_article.image.url }}" alt="Статья" class="article-image">
+        <div class="article-info">
+            <p translate="yes" title="Последняя новость!">{{ latest_article.short_content }}</p>
+            <p translate="yes">Опубликовано: {{ latest_article.date|date:"d.m.Y" }}&nbsp;{{ latest_article.date|time:"H:i" }}</p>
+        </div>
+    </div>
 </section>
 
 {% if user.is_authenticated %}
@@ -24,29 +36,55 @@
 
 {% endif %} 
 
-<section id="Ad">
-    <h2>Ad</h2>
-    <div class="image-row">
-        <img src="{% static 'images/adlion.jpg' %}" alt="Картинка 1" class="ad-parms" draggable="true">
-        <img src="{% static 'images/adzoo.jpeg' %}" alt="Картинка 2" class="ad-parms" draggable="true">
-        <img src="{% static 'images/adrhino.jpg' %}" alt="Картинка 3" class="ad-parms" draggable="true">
+<section class="ad-section" id="Ad">
+   
+        <img class="ad" src="{% static 'images/adlion.jpg' %}" alt="Картинка 1" class="ad-parms" draggable="true">
+        <img class="ad" src="{% static 'images/adzoo.jpeg' %}" alt="Картинка 2" class="ad-parms" draggable="true">
+        <img class="ad" src="{% static 'images/adrhino.jpg' %}" alt="Картинка 3" class="ad-parms" draggable="true">
+   
+</section>
+{% load static %}
+<section>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide active" data-link="{% url 'animals' %}">
+                <img src="{% static 'images/adlion.jpg' %}" alt="Slide 1">
+                <div class="caption">Lion</div>
+            </div>
+            <div class="slide" data-link="{% url 'animals' %}">
+                <img src="{% static 'images/adzoo.jpeg' %}" alt="Slide 2">
+                <div class="caption">Zoo</div>
+            </div>
+            <div class="slide" data-link="{% url 'animals' %}">
+                <img src="{% static 'images/adrhino.jpg' %}" alt="Slide 3">
+                <div class="caption">Rhino</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <div class="pagination"></div>
+        <div class="slide-number"></div>
     </div>
 </section>
 
-<section id = "Parnters">
+<section>
     <h2>Наши партнеры</h2>
-    <ul class="SpecList">
+    <div class="partners-section">
+    <div class="partners-container">
         {% for partner in partners %}
-            <li>
-                <a href="{{ partner.website }}" target="_blank">
-                    <img class="partnerlogo" src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo" style="width:100px;">
-                    {{ partner.name }}
-                </a>
-            </li>
+            <a href="{{ partner.website }}" class="partner">
+                <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
+            </a>
         {% endfor %}
-    </ul>
+    </div>
+    </div>
+</a>
 </section>
-
+<section lang="fr">
+    <blockquote lang="fr">Chaque personne a sa propre voie</blockquote>
+</section>
 <pre hidden>
 <code>
 def home(request):
@@ -71,4 +109,29 @@ def home(request):
     return render(request, 'home.html', context)
 </code>
 </pre>
+<section class="scene-section"> 
+<div class="scene">
+    <div class="panda"></div>
+    <div class="head"></div>
+    <div class="head2"></div>
+    <div class="nose"></div>
+    <div class="ear1"></div>
+    <div class="eye-spot"></div>
+    <div class="eye"></div>
+    <div class="eye-white"></div>
+    <div class="arm"></div>
+    <div class="leg"></div>
+    <div class="tree">
+        
+    </div>
+    <div class="leaf"></div>
+    <div class="vetka"></div>
+    <div class="crona"></div>
+    <div class="palm"></div>
+    <div class="palm2"></div>
+    <div class="ground"></div>
+    <div class="zoo-name">ZooWorld</div>
+</div>
+</section>
+
 {% endblock content %}

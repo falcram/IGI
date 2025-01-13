@@ -1,0 +1,96 @@
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    display: none;
+    text-align: center;
+}
+
+.slide.active {
+    opacity: 1;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 50px;
+    left: 375px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px;
+    font-size: 18px;
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px -40px 0px 40px;
+    gap: 20px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.slide img {
+    width: auto; /* Фиксированная ширина */
+    height: 700px; /* Автоматическая высота для сохранения пропорций */
+    max-width: 100%; /* Ограничиваем максимальную ширину */
+    margin: 0 auto; /* Центрируем изображение */
+    display: block; /* Делаем изображение блочным элементом */
+}
+
+.pagination button {
+    background-color: #f5ca1f; /* Цвет по умолчанию */
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #477822; /* Цвет для активной кнопки */
+    color: white; /* Цвет текста для активной кнопки */
+}

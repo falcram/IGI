@@ -1,0 +1,29 @@
+.job {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    float: left; /* Плавающий блок */
+    width: calc(30% - 20px); /* Ширина блока, учитывая отступы */
+    margin-right: 15px; /* Отступ между блоками */
+}
+
+.job:nth-child(3n) {
+    margin-right: 0; /* Убираем отступ справа для каждого третьего блока */
+}
+
+@media (max-width: 768px) {
+    .job {
+        width: calc(50% - 20px); 
+    }
+}
+
+@media (max-width: 480px) {
+    .job {
+        width: 100%; 
+        margin-right: 0; 
+    }
+}
+

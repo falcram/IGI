@@ -1,0 +1,44 @@
+#settings {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.container {
+    position: relative;
+    height: 80vh; /* Увеличиваем высоту для скролла */
+}
+
+.background {
+    position: absolute;
+    height: 900px;
+    width: 1200px;
+    background-image: url(../media/background.jpg); /* Укажите путь к фоновому изображению */
+   
+    z-index: 0; /* Фон позади */
+}
+
+.scroll-image {
+    position: absolute;
+    width: 200px; /* Задайте нужный размер */
+    bottom: 10%; /* Устанавливаем изображения на одной горизонтали */
+    transition: transform 0.2s ease;
+    z-index: 1; /* Изображения поверх фона */
+}
+
+#image1 {
+    left: 20%;
+}
+
+#image2 {
+    left: 40%;
+}
+
+#image3 {
+    left: 60%;
+}
+
+.spacer {
+    height: 100vh; /* Для отступа внизу */
+}

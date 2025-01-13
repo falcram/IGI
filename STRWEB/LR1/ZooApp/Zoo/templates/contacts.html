@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block title %}Contacts{% endblock title %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+
 <h1>Контакты</h1>
+<div class="container-employee">
     {% for contact in contacts %}
-        <section id="contacts">
+        <section id="contacts" class="employee">
             <details>
                 <summary>{{ contact.user.first_name }} {{ contact.user.last_name}}</summary>
                 <address>
+                    <div class="employee-info">
                     <p>{{ contact.description }}</p>
                     <p>Телефон: {{ contact.user.phone }}</p>
                     <p>Email: {{ contact.user.email }}</p>
+                    </div>
                 </address>
-                <img src="{{ contact.photo.url }}" height="180" width="180">
+                <img src="{{ contact.photo.url }}" height="180" width="180" class="employee-photo">
             </details>
         </section> 
             {% if user.is_authenticated %}
@@ -26,7 +32,6 @@
                 {% endif %}
             {% endif %}
                 
-        
     {% endfor %}
 
     {% if user.is_authenticated %}
@@ -36,4 +41,5 @@
             </form>
         {% endif %}    
     {% endif %}
+</div>
 {% endblock content %}

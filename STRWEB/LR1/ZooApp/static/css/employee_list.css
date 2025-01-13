@@ -1,0 +1,129 @@
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #a3d9a3; /* Светло-зеленый бордер */
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #76c776; /* Более яркий зеленый при фокусе */
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4caf50; /* Основной зеленый цвет */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049; /* Темнее при наведении */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #d1e7d1; /* Легкий зеленый бордер */
+}
+
+th {
+    background-color: #76c776; /* Светло-зеленый заголовок */
+    color: white;
+    cursor: pointer;
+}
+
+th:hover {
+    background-color: #66b766; /* Темнее при наведении */
+}
+
+tr:hover {
+    background-color: #d9f7d9; /* Легкий фон при наведении на строку */
+}
+
+#details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9f7e9; /* Светлый фон для блока деталей */
+    border-left: 5px solid #4caf50; /* Зеленая рамка слева */
+}
+
+#addForm {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #a3d9a3; /* Светло-зеленый бордер */
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#addForm h2 {
+    margin-top: 0;
+    color: #2b7a2b; /* Тёмно-зеленый цвет заголовка формы */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    margin: 0 5px;
+    background-color: #4caf50; /* Основной зеленый цвет */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #45a049; /* Темнее при наведении */
+}
+
+.pagination a.active {
+    background-color: #76c776; /* Цвет для активной страницы */
+    pointer-events: none; /* Отключаем клики на активной странице */
+}
+
+.pagination a.disabled {
+    background-color: #c0c0c0; /* Цвет для неактивных ссылок */
+    color: #666;
+    pointer-events: none; /* Отключаем клики на неактивных ссылках */
+}
+/* Стиль для сообщений об ошибках и успешных действиях */
+.error {
+    border: 1px solid red;
+    background-color: #f8d7da; /* Красный фон для ошибок */
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}
+.sort-asc::after {
+    content: " ▲"; /* Стрелка вверх для сортировки по возрастанию */
+}
+
+.sort-desc::after {
+    content: " ▼"; /* Стрелка вниз для сортировки по убыванию */
+}

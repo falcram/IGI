@@ -1,7 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+    /*background-image: url(../media/jungles2.jpg);
+    background-size: cover; 
+    background-position: center;*/
 }
 
 h2 {
@@ -12,32 +15,43 @@ p {
 }
 
 nav {
+    display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
+    
+    top: 0; /* Положение от верхнего края */
+    left: 0; /* Положение от левого края */
+    width: 100%;
     gap: 10px;
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #2d7a39;
     align-items: center;
+    position: fixed;
+    z-index: 10;
 }
 
+
+
 nav a {
+    flex-grow: 1;
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
     padding: 5px 10px;
     border-radius: 2px;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 nav a:hover {
-    color: rgba(255, 89, 0, 0.458);
-    background-color: #e0e0e0;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #146916;
 }
 
 .content {
     margin: 20px;
 }
 
-img {
+.img {
     max-width: 100%;
     height: auto;
     display: block;
@@ -55,29 +69,25 @@ img {
 .centered-image{
     text-align: center;
 }
-.image-row {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(240px, 10fr));
-    gap: 1px; /* Отступ между картинками */
-    width: 200px;
-    height: auto;
-    align-items: center;
-}
+
 .ad-parms{
     width: 260px;
 }
 
 main {
     background-color: #ffffff; /* Белый фон для основного контента */
-    max-width: 800px; /* Максимальная ширина */
+    max-width: 1200px; /* Максимальная ширина */
     margin: 20px auto; /* Центрирование с отступами */
     padding: 20px; /* Внутренние отступы */
     border-radius: 8px; /* Скругленные углы */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для выделения */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 60px;  /* Тень для выделения */
+    z-index: 2;
+    min-height: 100vh;
 }
 
 
-main h2 {
+main>h2 {
     color: #333; /* Цвет заголовка */
     border-bottom: 2px solid #4d7d0d; /* Подчеркивание заголовка */
     padding-bottom: 10px; /* Отступ снизу */
@@ -92,7 +102,7 @@ main section {
     border-radius: 10px;
 }
 
-main section h2 {
+main section>h2 {
     font-size: 28px;
     color: #34495e;
     margin-bottom: 20px;
@@ -147,9 +157,10 @@ footer {
     color: #ffffff; /* Белый цвет текста */
     text-align: center; /* Центрирование текста */
     padding: 15px; /* Внутренние отступы */
-    position: relative; /* Позиционирование */
+     /* Позиционирование */
     bottom: 0; /* Прикрепление к низу */
     width: 100%; /* Ширина на всю страницу */
+    
 }
 
 footer p {
@@ -169,4 +180,132 @@ main h3 {
     color: #1e2541; /* Цвет заголовка */
     border-bottom: 2px solid #344c15; /* Подчеркивание заголовка */
     padding-bottom: 10px; /* Отступ снизу */
+}
+
+
+
+h1.company-name  {
+    font-family: 'Arial', sans-serif; /* Шрифт заголовка */
+    font-size: 36px; /* Размер шрифта */
+    letter-spacing: 2px; /* Кернинг между буквами */
+    color: #1e692c; /* Цвет текста */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+
+
+
+.Container-Pre{
+    height: 100vh; /* Высота на весь экран */
+    margin: 30;
+    background-color: #f0f0f0;
+    position: fixed;
+}
+
+.circle {
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    z-index: 1;
+    
+    width: 130px; /* Ширина круга */
+    height: 130px; /* Высота круга */
+
+    border: 8px solid transparent;
+    border-radius: 50%;
+    border-color: #0a0e10; 
+    animation: spin 2s linear infinite; /* Прозрачная граница для центрирования */
+}
+
+.dotted {
+    position: relative; 
+    border-radius: 50%;
+    top: 48.5%;
+    left: 48.5%;
+    z-index: 2;
+    width: 130px; /* Ширина круга */
+    height: 130px;
+    border: 8px dotted #bfb9b9; /* Цвет и стиль линий из точек */
+    animation: spin 4s linear infinite reverse; /* Анимация вращения в обратном направлении */
+}
+
+/* Анимация вращения */
+@keyframes spin {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+blockquote[lang="fr"] {
+    quotes: "«" "»" "‹" "›";
+}
+
+blockquote:before {
+    content: open-quote;
+}
+
+blockquote:after {
+    content: close-quote;
+}
+
+
+input:required {
+    border: 2px solid rgb(211, 154, 48);
+}
+
+
+
+input[type="text"]:valid {
+    border-color: green; 
+}
+
+input:enabled {
+    background-color: rgb(28, 165, 42); 
+     
+}
+
+input:disabled {
+    background-color: #ccc; /* Серый фон для заблокированных */
+    color: #666; 
+    cursor: not-allowed; /* Курсор "недоступен" */
+}
+
+input[type="number"]:invalid {
+    border: 2px solid orange; 
+}
+
+/* Для выбора значений вне диапазона */
+input[type="range"]:invalid {
+    background-color: #f9c2c2; 
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #4CAF50; 
+}
+
+/* Стили для включенных радиокнопок */
+input[type="radio"]:checked {
+    accent-color: #2196F3; 
+}
+
+/* При наведении на флажок или переключатель */
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+    cursor: pointer; 
+}
+
+ul.custom-list {
+    list-style: none; /* Убираем стандартные маркеры */
+    padding: 0; /* Убираем отступы */
+}
+
+ul.custom-list li::before {
+    content: "✔️"; 
+    margin-right: 10px; 
+    color: #4CAF50; 
+}
+
+::selection {
+    background-color: #2196F3;
+    color: white;
 }

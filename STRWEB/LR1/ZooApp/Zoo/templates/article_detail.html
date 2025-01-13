@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title }}{% endblock title %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/article.css' %}">
+
 <section id = "News_detail">
-    <h1>{{ article.title }}</h1>
+    
+        <h1 class="short-info"> {{ article.title }}</h1>
+   
+    <br>
     <img src="{{ article.image.url }}"height="400" width="550">
-    <p>{{ article.content }}</p>
+    <div class="multi-column"> <p class="news-content">{{ article.content }}</p></div>
     <a href="{% url 'article_list' %}">Назад к списку статей</a>
     <p>Опубликованно: {{ article.date|date:"d.m.Y" }}&nbsp;{{ article.date|time:"H:i" }}</p>
 </section>

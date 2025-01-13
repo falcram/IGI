@@ -1,11 +1,135 @@
-
 {% extends "base.html" %}
 {% block title %}HTML{% endblock title %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_settings.css' %}">
+<div class="container">
+    <div class="background"></div>
+    <img src="{% static 'images/adlion.jpg' %}" class="scroll-image" id="image1">
+    <img src="{% static 'images/jiraf.avif' %}" class="scroll-image" id="image2">
+    <img src="{% static 'images/Zicon.jpg' %}" class="scroll-image" id="image3">
+    <div class="spacer"></div>
+</div>
+<script>window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
 
-<header>
+    const image1 = document.getElementById('image1');
+    const image2 = document.getElementById('image2');
+    const image3 = document.getElementById('image3');
+
+    // Изменяем трансформацию для расхождения
+    image1.style.transform = `translate(-${scrollY * 0.5}px, 0)`; // Уходит влево
+    image2.style.transform = `translate(${scrollY * 0.5}px, 0)`;  // Уходит вправо
+    image3.style.transform = `translate(-${scrollY * 0.7}px, 0)`; // Уходит влево
+});</script>
+<div>
+    <label>
+        <input type="checkbox" id="toggle-settings"> Показать настройки
+    </label>
+</div>
+
+<div id="settings" style="display: none;">
+    <h3>Настройки</h3>
+    <label for="font-size">Размер шрифта:</label>
+    <select id="font-size">
+        <option value="14px">Маленький</option>
+        <option value="18px">Средний</option>
+        <option value="22px">Большой</option>
+    </select>
+
+    <label for="text-color">Цвет текста:</label>
+    <input type="color" id="text-color" value="#000000">
+
+    <label for="bg-color">Цвет фона:</label>
+    <input type="color" id="bg-color" value="#ffffff">
+</div>
+<script src="{% static 'script/style_settings.js' %}"></script>
+
+
+
+
+
     <h1>Добро пожаловать в наш Зоопарк!</h1>
-</header>
+
+    <h1>Список полупроводников</h1>
+    <div id="output"></div>
+    <form id="substanceForm">
+        <input type="text" id="name" placeholder="Название вещества" required>
+        <input type="number" id="density" placeholder="Удельный вес" required>
+        <input type="text" id="conductivity" placeholder="Проводимость" required>
+        <button type="submit">Добавить вещество</button>
+    </form>
+
+    <script>
+        // Базовый класс Substance
+        function Substance(name, density, conductivity) {
+            this.name = name;
+            this.density = density;
+            this.conductivity = conductivity;
+        }
+
+        Substance.prototype.getName = function() {
+            return this.name;
+        };
+
+        Substance.prototype.getDensity = function() {
+            return this.density;
+        };
+
+        Substance.prototype.getConductivity = function() {
+            return this.conductivity;
+        };
+
+        Substance.prototype.display = function() {
+            return `${this.name}: ${this.density} г/см³, ${this.conductivity}`;
+        };
+
+        // Класс-наследник Semiconductor
+        function Semiconductor(name, density) {
+            Substance.call(this, name, density, 'полупроводник');
+        }
+
+        Semiconductor.prototype = Object.create(Substance.prototype);
+        Semiconductor.prototype.constructor = Semiconductor;
+
+        // Массив для хранения веществ
+        const substances = [];
+
+        // Обработчик события для формы
+        document.getElementById('substanceForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Отменяем стандартное поведение формы
+            const name = document.getElementById('name').value;
+            const density = parseFloat(document.getElementById('density').value);
+            const conductivity = document.getElementById('conductivity').value;
+
+            let substance;
+            if (conductivity.toLowerCase() === 'полупроводник') {
+                substance = new Semiconductor(name, density);
+            } else {
+                substance = new Substance(name, density, conductivity);
+            }
+
+            substances.push(substance); // Добавляем новое вещество в массив
+            displaySubstances(); // Обновляем отображение
+            this.reset(); // Сбрасываем форму
+        });
+
+        // Функция для отображения всех полупроводников
+        function displaySubstances() {
+            const output = document.getElementById('output');
+            output.innerHTML = ''; // Очищаем предыдущие результаты
+            substances.forEach(substance => {
+                if (substance.getConductivity() === 'полупроводник') {
+                    output.innerHTML += `<p>${substance.display()}</p>`;
+                }
+            });
+        }
+    </script>
+<h1>Введите вашу дату рождения</h1>
+<input type="date" id="birthdate" required>
+<button id="check-age">Проверить возраст</button>
+
+<script src="{% static 'script/birthdate.js' %}"></script>
 
 <!-- Горизонтальная навигация -->
 
@@ -26,13 +150,6 @@
     <h2>Четверостишие</h2>
     <p>Мы в зоопарке, здесь веселье,<br>Тигры играют в лучах солнца.<br>Слышны львы вдалеке, кричат с восторгом,<br>Природа зовет, приходи скорее!</p>
 </section>
-
-<nav class="unstyled">
-    <ul class="unstyled">
-        <li>Элемент 1 </li>
-        <li>Элемент 2 </li>
-    </ul>
-</nav>
 
 <section id="animals">
     <h2>Ссылки</h2>
@@ -70,6 +187,9 @@
             <label for="visit-date">Дата визита:</label>
             <input type="date" id="visit-date" name="visit-date" tabindex="2" required><br><br>
 
+            <label for="number">Числа</label>
+            <input type="number" max="100">
+
             <label for="animal-select">Какое животное хотите увидеть?</label>
             <select id="animal-select" name="animal">
                 <option selected value="tiger">Тигр</option>
@@ -90,8 +210,16 @@
     loading="lazy">
 </iframe>
 
+<ul class="custom-list">
+    <li>Первый элемент списка</li>
+    <li>Второй элемент списка</li>
+    <li>Третий элемент списка</li>
+</ul>
+
+
+
 <form>
-    <input type="text" value="" placeholder="Введите текст"><br>
+    <input type="text" value="" disabled placeholder="Введите текст"><br>
     <input type="password" value="" placeholder="Введите пароль"><br>
     <input type="email" value="" placeholder="example@example.com"><br>
     <input type="url" value="" placeholder="https://example.com"><br>

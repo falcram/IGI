@@ -10,12 +10,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.utils import timezone
 from datetime import datetime
+from django.core.paginator import Paginator
+from django.shortcuts import render
 from tzlocal import get_localzone
 from django.forms import inlineformset_factory
 import pytz
 import requests
 import logging
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 logging.basicConfig(level=logging.INFO, filename='logging.log', filemode='a', format='%(asctime)s %(levelname)s %(message)s')
@@ -53,6 +58,7 @@ def about_company(request):
 
 def promocodes(request):
     promocodes = PromoCode.objects.all()
+    print(promocodes)
     return render(request, 'promocodes.html', {'promocodes': promocodes})
 
 def faqs(request):
@@ -281,6 +287,12 @@ def article_detail(request, pk):
 def ticket_list(request):
     # Извлекаем все доступные даты для билетов
     ticket_dates = TicketDate.objects.filter(available_quantity__gt=0).order_by('date')
+    paginator = Paginator(ticket_dates, 3)  # 3 билета на страницу
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'ticket_list.html', {'page_obj': page_obj})
     
     return render(request, 'ticket_list.html', {
         'ticket_dates': ticket_dates
@@ -385,3 +397,32 @@ def changeamount_in_cart(request, item_id):
 def order_list(request):
     orders = Order.objects.all()  # Получаем все заказы
     return render(request, 'order_list.html', {'orders': orders})
+
+def employee_list(request):
+    query = request.GET.get('search', '')
+    employees = Employee.objects.filter(full_name__icontains=query)
+
+    paginator = Paginator(employees, 3)  # 3 employee per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'employee_list.html', {'page_obj': page_obj, 'query': query})
+
+def add_employee(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('fullName')
+        photo = request.FILES.get('photo')
+        description = request.POST.get('description')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+
+        employee = Employee.objects.create(
+            full_name=full_name,
+            photo=photo,
+            description=description,
+            phone=phone,
+            email=email
+        )
+        return JsonResponse({'id': employee.id})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)

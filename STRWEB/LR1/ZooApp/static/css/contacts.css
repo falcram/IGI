@@ -1,0 +1,30 @@
+.container-employee {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    justify-content: space-around; /* Распределяет пространство между элементами */
+    align-items: flex-start;
+}
+
+.employee {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px; /* Ширина карточки сотрудника */
+    display: flex;
+}
+
+.employee-photo {
+    border-radius: 50%;
+    width: 80px; /* Ширина фото */
+    height: 80px; /* Высота фото */
+    margin-right: 15px; /* Отступ между фото и информацией */
+}
+
+.employee-info {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение текста */
+    justify-content: center; /* Центрирование по вертикали */
+}

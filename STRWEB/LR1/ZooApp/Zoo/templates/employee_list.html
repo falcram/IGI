@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}Employee{% endblock title %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
+<h1>Сотрудники</h1>
+<input type="text" id="search" placeholder="Поиск..." value="{{ query }}">
+<button onclick="search()">Найти</button>
+<button onclick="showAddForm()">Добавить</button>
+<button onclick="rewardEmployees()">Премировать</button> <!-- Кнопка премирования -->
+
+<table id="employeeTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">ФИО</th>
+            <th onclick="sortTable(1)">Фото</th>
+            <th onclick="sortTable(2)">Описание</th>
+            <th onclick="sortTable(3)">Телефон</th>
+            <th onclick="sortTable(4)">Почта</th>
+            <th>Выбрать</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in page_obj %}
+        <tr onclick="showDetails('{{ employee.full_name }}', '{{ employee.description }}', '{{ employee.phone }}', '{{ employee.email }}')">
+            <td>{{ employee.full_name }}</td>
+            <td><img src="{{ employee.photo.url }}" alt="Фото" width="50"></td>
+            <td>{{ employee.description }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>{{ employee.email }}</td>
+            <td><input type="checkbox" class="emp-checkbox" value="{{ employee.full_name }}"></td> <!-- Изменено для использования ФИО -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="sortDirection"></div>
+<div>
+    {% for i in page_obj.paginator.page_range %}
+        <a href="?page={{ i }}&search={{ query }}">{{ i }}</a>
+    {% endfor %}
+</div>
+
+<div id="details"></div>
+<div id="addForm" style="display:none;">
+    <form id="employeeForm" enctype="multipart/form-data">
+        <h2>Добавить сотрудника</h2>
+        <input type="text" id="fullName" name="fullName" placeholder="ФИО" required>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <textarea id="description" name="description" placeholder="Описание" required></textarea>
+        <input type="text" id="phone" name="phone" placeholder="Телефон" required>
+        <input type="email" id="email" name="email" placeholder="Почта" required>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div id="rewardMessage" style="margin-top: 20px; font-weight: bold;"></div> <!-- Контейнер для сообщения о премировании -->
+
+<script src="{% static 'script/employee_list.js' %}"></script>
+<script>
+    // Функция для премирования сотрудников
+    function rewardEmployees() {
+        const checkboxes = document.querySelectorAll('.emp-checkbox:checked');
+        const names = [];
+
+        checkboxes.forEach((checkbox) => {
+            names.push(checkbox.value);
+        });
+
+        if (names.length > 0) {
+            const rewardMessage = `Премируются сотрудники: ${names.join(', ')}.`;
+            document.getElementById('rewardMessage').innerText = rewardMessage;
+        } else {
+            alert('Пожалуйста, выберите хотя бы одного сотрудника для премирования.');
+        }
+    }
+
+    document.getElementById('employeeForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+        const formData = new FormData(this); // Создаем объект FormData из формы
+
+        fetch("{% url 'add_employee' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}' // Добавляем CSRF-токен для защиты
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.id) {
+                const employeeTable = document.getElementById('employeeTable').getElementsByTagName('tbody')[0];
+                const newRow = employeeTable.insertRow();
+                newRow.innerHTML = `
+                    <td>${document.getElementById('fullName').value}</td>
+                    <td><img src="${URL.createObjectURL(document.getElementById('photo').files[0])}" alt="Фото" width="50"></td>
+                    <td>${document.getElementById('description').value}</td>
+                    <td>${document.getElementById('phone').value}</td>
+                    <td>${document.getElementById('email').value}</td>
+                    <td><input type="checkbox" class="emp-checkbox" value="${document.getElementById('fullName').value}"></td>
+                `;
+
+                // Очистка формы
+                document.getElementById('employeeForm').reset();
+                document.getElementById('addForm').style.display = 'none'; // Скрыть форму после добавления
+            } else {
+                alert('Ошибка добавления сотрудника');
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+    });
+
+    function showAddForm() {
+        document.getElementById('addForm').style.display = 'block'; // Отобразить форму добавления
+    }
+</script>
+{% endblock content %}

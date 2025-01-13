@@ -21,4 +21,5 @@ admin.site.register(Article)
 admin.site.register(TicketDate)
 admin.site.register(CartItem)
 admin.site.register(Order)
+admin.site.register(Employee)
 

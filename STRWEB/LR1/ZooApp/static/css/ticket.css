@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,500;0,700;1,500;1,700&display=swap');
+
+:root {
+    font-family: 'Raleway', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.card-wrapper {
+    min-height: 45ch;
+    position: relative;
+    perspective: 1000px; /* Уменьшено для более естественного эффекта */
+}
+
+.big_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки одинаковой ширины */
+    grid-auto-rows: 300px; /* Высота строк */
+    gap: 20px; /* Увеличены промежутки между элементами */
+    padding: 10px;
+}
+
+.card {
+    --posx: 50%;
+    --posy: 50%;
+    --rotateX: 0;
+    --rotateY: 0;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 1em;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Плавный переход */
+    overflow: hidden; /* Прячем элементы, выходящие за пределы карточки */
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание содержимого */
+    transform: 
+        perspective(100em)
+        translateZ(0em)
+        rotateY(var(--rotateX)) 
+        rotateX(var(--rotateY));
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Эффект тени при наведении */
+    transform: 
+        perspective(100em)
+        translateZ(5px) /* Приподнимаем карточку */
+        rotateY(var(--rotateX)) 
+        rotateX(var(--rotateY));
+}
+
+.card:after {
+    content: '';
+    position: absolute;
+    inset: 0; /* Заполнение всей карточки */
+    background-color: rgb(131, 172, 112);
+    opacity: 0.3;
+    transform: translateZ(-10em);
+    border-radius: inherit;
+    filter: blur(3rem);
+    pointer-events: none; /* Позволяет кликам проходить через этот элемент */
+}
+
+.card:before {
+    opacity: 0.5;
+    content: '';
+    position: absolute;
+    inset: 0; /* Заполнение всей карточки */
+    background-color: rgb(255, 255, 255);
+    mix-blend-mode: color;
+    border-radius: inherit;
+    pointer-events: none; /* Позволяет кликам проходить через этот элемент */
+}
+
+.card h2 {
+    margin: 0;
+    color: #000; /* Изменен цвет текста */
+    padding: 1rem;
+    font-weight: 600; /* Увеличен вес шрифта */
+    font-size: 1.5rem; /* Уменьшен размер шрифта для лучшего отображения */
+}
+
+.card .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    color: #000; /* Изменен цвет текста */
+    border-radius: inherit;
+    font-size: 1rem; /* Уменьшен размер шрифта */
+    line-height: 1.4;
+}
+
+/* Пагинация */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+    position: relative; /* Убедитесь, что позиции элементов корректны */
+    z-index: 10; /* Увеличьте z-index, чтобы кнопки были выше других элементов */
+}
+
+.pagination a {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative; /* Обеспечивает правильное позиционирование */
+    z-index: 20; /* Убедитесь, что кнопки выше других элементов */
+}
+
+.pagination a:hover {
+    background: #0056b3;
+}
+
+.pagination .current {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background: #f4f4f4;
+    color: #333;
+}
+
+@keyframes reset-card {
+    to {
+        background-position: 50% 50%;
+        transform: 
+            rotateY(0) 
+            rotateX(0);
+    }
+}

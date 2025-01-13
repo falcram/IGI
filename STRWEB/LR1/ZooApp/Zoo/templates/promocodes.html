@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Discounts{% endblock title %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/promocode.css' %}">
+
 <h2>Промокод</h2>
+    <ol class="promo">
     {% for promo in promocodes %}
-        <div>
-            <h3>Скидка {{ promo.discount }}%</h3>
-            <p>Промокод <b>{{ promo.code }}</b></p>
-        </div>
+    <li >
+        <p> {{ promo }}</p>
+    <li>
     {% endfor %}
+    </ol>
 {% endblock content %}

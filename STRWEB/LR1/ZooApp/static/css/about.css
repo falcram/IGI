@@ -1,0 +1,64 @@
+.logo {
+    width: 200px; /* Устанавливаем ширину логотипа */
+    transition: transform 0.8s; /* Плавный переход при трансформации */
+}
+
+.logo:hover {
+    transform: rotate(-20deg);
+    /*transform:  skew(30deg, 20deg) ; /* Поворот логотипа при наведении */
+}
+
+
+.certificate {
+    width: 600px;
+    height: 800px;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8)), url(../media/MinPrirodaRb.jpg); /* Замените на ваше фоновое изображение */
+    background-size: cover;
+    background-position: center;
+    border: 20px solid transparent;
+    border-image: url(../media/redgreen.jpeg) 30  round; 
+    border-radius: 10%;
+    -moz-border-radius: 20%;/* Замените на ваше изображение рамки */
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень для сертификата */
+}
+
+.certificate h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #333;
+    margin: 10px 0;
+}
+main .certificate h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #010101;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 0cap solid #4d7d0d;
+
+}
+
+.certificate p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.requisites {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.media {
+    margin-top: 20px;
+}
+
+video, audio {
+    width: 100%; /* Адаптивная ширина для видео и аудио */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

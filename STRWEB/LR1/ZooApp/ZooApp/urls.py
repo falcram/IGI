@@ -70,6 +70,8 @@ urlpatterns = [
     path('changeamount-in-cart/<int:item_id>/', views.changeamount_in_cart, name='changeamount_in_cart'),
 
     path('order-list/', views.order_list, name='order_list'),
+    path('employee_list/', views.employee_list, name='employee_list'),
+     path('add-employee/', views.add_employee, name='add_employee'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

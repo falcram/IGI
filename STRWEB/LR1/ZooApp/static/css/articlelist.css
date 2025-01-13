@@ -1,0 +1,16 @@
+.article {
+    width: 250px; /* Ширина блока статьи */
+    height: 50px; /* Высота блока */
+    overflow: hidden; /* Скрыть переполнение */
+    text-overflow: ellipsis; /* Многоточие при переполнении */
+    white-space: nowrap; /* Запрет на перенос строки */
+    border: 1px solid #ccc; /* Граница */
+    padding: 10px;
+    position: relative;
+}
+.short-info {
+    height: 60px; /* Ограниченная высота для краткой информации */
+    overflow: hidden; /* Скрыть переполнение */
+    text-overflow: ellipsis; /* Многоточие */
+    white-space: nowrap; /* Запрет на перенос строки */
+}

@@ -210,3 +210,13 @@ class Order(models.Model):
         if self.promo_code:
             total = total - (total * (self.promo_code.discount / 100))
         return total
+
+class Employee(models.Model):
+    full_name = models.CharField(max_length=255)
+    photo = models.ImageField(upload_to='photos/')
+    description = models.TextField()
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.full_name
